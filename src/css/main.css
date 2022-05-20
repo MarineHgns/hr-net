@@ -21,6 +21,8 @@ html {
   
   .bg-dark {
     background-color: #12002b;
+    padding-top: 2em;
+    padding-bottom: 2em;
   }
   
   .sr-only {
@@ -56,6 +58,8 @@ html {
   .main-nav-item {
     text-decoration: none;
     margin-right: 0.5rem;
+    font-size: 1.2em;
+    display: flex;
   }
   
   .main-nav-item:hover {
@@ -280,6 +284,7 @@ html {
   
 .icon-sign {
   padding-right: 0.5em;
+  font-size: 1.4em;
 }
 
   @media (min-width: 720px) {
