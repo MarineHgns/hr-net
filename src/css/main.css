@@ -287,6 +287,12 @@ html {
   font-size: 1.4em;
 }
 
+.errorMessage {
+  color: red;
+  font-weight: 600;
+  font-size: 1em;
+}
+
   @media (min-width: 720px) {
     .account {
       flex-direction: row;
