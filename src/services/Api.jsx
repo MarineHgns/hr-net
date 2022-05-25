@@ -9,7 +9,7 @@ class ApiCalls {
       .then(function (response) {
         if (response.data.body.token) {
           if (rememberMe) {
-            sessionStorage.setItem("JWTtoken", response.data.body.token)
+            sessionStorage.setItem("JWT", response.data.body.token)
           }
           return response
         }
@@ -21,10 +21,10 @@ class ApiCalls {
       });
   }
 
-  async getUserProfileData(JWTtoken) {
+  async getUserProfileData(JWT) {
     return await axios.post("http://localhost:3001/api/v1/user/profile", {}, {
       headers: {
-        Authorization: "Bearer" + JWTtoken
+        Authorization: "Bearer " + JWT
       }
     })
     .then(function (response) {
@@ -36,14 +36,14 @@ class ApiCalls {
     }) 
   }
 
-  async updateUserProfileData(firstName, lastName, JWTtoken) {
+  async updateUserProfileData(firstName, lastName, JWT) {
     return await axios.put("http://localhost:3001/api/v1/user/profile", {
       firstName,
       lastName
     },
     {
       headers: {
-        Authorization: "Bearer" + JWTtoken
+        Authorization: "Bearer " + JWT
       }
     })
     .then(function (response) {

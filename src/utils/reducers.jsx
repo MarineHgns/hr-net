@@ -1,9 +1,10 @@
 import { createReducer, createAction } from '@reduxjs/toolkit'
 
 export const logIn = createAction('logIn')
-export const setUser = createAction('setUser')
-export const updateUser = createAction('updateUser')
 export const logOut = createAction('logOut')
+export const setUserData = createAction('setUserData')
+export const updateUserData = createAction('updateUserData')
+
 
 const initialState = {
     connected: false,
@@ -33,5 +34,13 @@ export default createReducer(initialState, (builder) =>
         if (draft.connected === false) {
             return
         }
+    })
+    .addCase(setUserData, (draft, userData) => {
+        console.log(userData);
+        draft.userData = userData.payload
+    })
+    .addCase(updateUserData, (draft, userData) => {
+        draft.userData.firstName = userData.payload.firstName
+        draft.userData.lastName = userData.payload.lastName
     })
 )

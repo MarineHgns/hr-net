@@ -1,6 +1,6 @@
 import ArgentBankIcon from "../assets/argentBankLogo.png"
 import { Link } from "react-router-dom"
-import { selectUserLogin } from '../utils/selectors'
+import { selectUserLogin, selectFirstName } from '../utils/selectors'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import { logOut } from "../utils/reducers";
@@ -9,6 +9,7 @@ import { faArrowRightFromBracket, faUserCircle } from "@fortawesome/free-solid-s
 
 function Header() {
     const connected = useSelector(selectUserLogin)
+    const firstName = useSelector(selectFirstName)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -16,7 +17,6 @@ function Header() {
         dispatch(logOut())
         navigate("/sign-in")
     }
-    console.log(connected);
     
     return (
         <nav className="main-nav">
@@ -29,15 +29,15 @@ function Header() {
             {connected 
                     ?
                     <div className='logged-container'> 
-                        <Link className='main-nav-item' to={"/user"}>NAME</Link>
+                        <Link className='main-nav-item' to={"/user"}>{firstName}</Link>
                         <FontAwesomeIcon icon={faArrowRightFromBracket} className="logout-icon"/>
-                        <p className='main-nav-item' onClick={handleLogOut}>Log out</p> 
+                        <p className='main-nav-item' onClick={handleLogOut}>Sign out</p> 
                     </div>
                     : 
-                    <div>
+                    <div className='logged-container'>
                         <FontAwesomeIcon icon={ faUserCircle } /> 
                         <Link className="main-nav-item" to={"/sign-in"}>
-                        Log In
+                        Sign In
                         </Link>
                     </div>}
         </nav>
