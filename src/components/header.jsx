@@ -15,7 +15,7 @@ function Header() {
 
     let handleLogOut = () => {
         dispatch(logOut())
-        navigate("/sign-in")
+        navigate("/")
     }
     
     return (
