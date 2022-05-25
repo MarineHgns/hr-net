@@ -28,14 +28,15 @@ function Header() {
 
             {connected 
                     ?
-                    <div className='logged-container'> 
+                    <div className='logged-container'>
+                        <FontAwesomeIcon icon={ faUserCircle } className="icon-sign"/>  
                         <Link className='main-nav-item' to={"/user"}>{firstName}</Link>
                         <FontAwesomeIcon icon={faArrowRightFromBracket} className="logout-icon"/>
                         <p className='main-nav-item' onClick={handleLogOut}>Sign out</p> 
                     </div>
                     : 
                     <div className='logged-container'>
-                        <FontAwesomeIcon icon={ faUserCircle } /> 
+                        <FontAwesomeIcon icon={ faUserCircle } className="icon-sign"/> 
                         <Link className="main-nav-item" to={"/sign-in"}>
                         Sign In
                         </Link>
