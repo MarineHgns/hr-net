@@ -11,6 +11,7 @@ class ApiCalls {
           if (rememberMe) {
             sessionStorage.setItem("JWT", response.data.body.token)
           }
+          console.log("Mon token de connexion est: " + response.data.body.token);
           return response
         }
       })
@@ -28,7 +29,6 @@ class ApiCalls {
       }
     })
     .then(function (response) {
-      console.log(response);
       return response
     })
     .catch (function (error) {
