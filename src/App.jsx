@@ -5,6 +5,7 @@ import "./css/main.css"
 import Header from "./components/header";
 import SignIn from "./pages/sign-in";
 import UserPage from "./pages/user";
+import Error from "./pages/error"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/argent-bank-app" element={<Home />}/>
             <Route path="/sign-in" element={<SignIn/>}/>
             <Route path="/user" element={<UserPage/>}/>
+            <Route path="/*" element={<Error />}/>
           </Routes>
           < Footer />
 
