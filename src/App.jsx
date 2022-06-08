@@ -3,9 +3,9 @@ import Footer from "./components/footer";
 import Home from "./pages/home";
 import "./css/main.css"
 import Header from "./components/header";
-import SignIn from "./pages/sign-in";
-import UserPage from "./pages/user";
 import Error from "./pages/error"
+import AddEmployee from "./pages/addEmployee";
+import ListEmployee from "./pages/listEmployee";
 
 function App() {
   return (
@@ -13,9 +13,9 @@ function App() {
         < Header />
           <Routes>
             <Route exact path="/" element={<Home />}/>
-            <Route path="/argent-bank-app" element={<Home />}/>
-            <Route path="/sign-in" element={<SignIn/>}/>
-            <Route path="/user" element={<UserPage/>}/>
+            <Route path="/hr-net" element={<Home />}/>
+            <Route path="/add-employee" element={<AddEmployee />}/>
+            <Route path="/list-employee" element={<ListEmployee />}/>
             <Route path="/*" element={<Error />}/>
           </Routes>
           < Footer />

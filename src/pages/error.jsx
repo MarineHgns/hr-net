@@ -7,8 +7,8 @@ function Error() {
             <section className="hero-content">
               <h2 className="sr-only">Error page</h2>
               <p className="subtitle">404</p>
-              <p className="subtitle">Oups! La page que vous demandez n'existe pas.</p>
-              <p className="text"><Link to="/">Retourner sur la page d'accueil</Link></p>
+              <p className="subtitle">Whoops! The page you requested does not exist.</p>
+              <p className="text"><Link to="/">Return to the home page</Link></p>
             </section>
           </div>
         </div>

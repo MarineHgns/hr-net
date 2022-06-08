@@ -1,24 +1,19 @@
-import Feature from '../components/feature'
-import { featuresData } from '../data/data'
+import { Link } from "react-router-dom"
 
 function Home() {
     return (
         <main className="homepage">
           <div className="hero">
             <section className="hero-content">
-              <h2 className="sr-only">Promoted Content</h2>
-              <p className="subtitle">No fees.</p>
-              <p className="subtitle">No minimum deposit.</p>
-              <p className="subtitle">High interest rates.</p>
-              <p className="text">Open a savings account with Argent Bank today!</p>
+              <p className="subtitle">Actions :</p>
+              <Link to="/add-employee" className="box-button">
+              <button className="button-87">Add employee</button>
+              </Link>
+              <Link to="/list-employee" className="box-button">
+              <button className="button-87">Employee list</button>
+              </Link>
             </section>
           </div>
-          <section className='features'>
-            <h2 className='sr-only'>Features</h2>
-            {featuresData && featuresData.map((e, i) => (
-              <Feature key={i} src={e.imgSrc} alt={e.alt} title={e.title} text={e.text} />
-            ))}
-          </section>
         </main>
     )
 }
