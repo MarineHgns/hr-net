@@ -385,6 +385,31 @@ body {
   text-decoration: none;
 }
 
+fieldset {
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  margin: auto;
+}
+
+.title {
+  margin-top: -3em;
+  margin-bottom: -1em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.center {
+  margin: auto;
+}
+
+input {
+  margin-bottom: 2em;
+  margin-top: 0.4em;
+}
+
 
 @media (min-width: 720px) {
   .account {

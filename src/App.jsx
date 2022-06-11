@@ -6,6 +6,7 @@ import Header from "./components/header";
 import Error from "./pages/error"
 import AddEmployee from "./pages/addEmployee";
 import ListEmployee from "./pages/listEmployee";
+import React from 'react';
 
 function App() {
   return (
