@@ -1,59 +1,82 @@
 import { Link } from "react-router-dom"
 import React from 'react';
+import { useState } from 'react';
+import CustomDatePicker from "../components/datePicker";
 
 function AddEmployee() {
+    const [employeeData, setEmployeeData] = useState({
+      firstName: "",
+      lastName: "",
+      dateBirth: "",
+      startDate: "",
+      street: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      department: "",
+    });
+    console.log(employeeData);
+
+    function handleFormChange(e) {
+        setEmployeeData((employee) =>({
+            ...employee,
+            [e.target.id]: e.target.value,
+          }));
+    }
+
     return (
       <div>
-      <div className="title">
-      <h1>HRnet</h1>
-      </div>
-      <div className="container">
-      <Link to="/list-employee">
-      <button className="button-87 center">View Current Employees</button>
-      </Link>
-      <h2>Create Employee</h2>
-      <form action="#" id="create-employee">
-          <label htmlFor="first-name" className="left">First Name</label><br/>
-          <input type="text" id="first-name" autoComplete="given-name" /><br/>
+        <div className="title">
+            <h1>HRnet</h1>
+        </div>
+            <div className="container">
+                <Link to="/list-employee">
+                    <button className="button-87 center">View Current Employees</button>
+                </Link>
+                <h2>Create Employee</h2>
+                <form action="#" id="create-employee" className="form-container">
+                    <label htmlFor="firstName" className="left">First Name</label>
+                    <input type="text" id="firstName" name="firstName" autoComplete="given-name" value={employeeData.firstName} onChange={handleFormChange} required/>
 
-          <label htmlFor="last-name">Last Name</label><br/>
-          <input type="text" id="last-name" autoComplete="family-name"/><br/>
+                    <label htmlFor="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" autoComplete="family-name" value={employeeData.lastName} onChange={handleFormChange} required/>
 
-          <label htmlFor="date-of-birth">Date of Birth</label><br/>
-          <input id="date-of-birth" type="text" autoComplete="bday" /><br/>
+                    <label htmlFor="date-of-birth">Date of Birth</label>
+                    <CustomDatePicker value={employeeData.dateBirth} setDate={(date) => setEmployeeData({ ...employeeData, dateBirth: date })}/><br/>
 
-          <label htmlFor="start-date">Start Date</label><br/>
-          <input id="start-date" type="text" /><br/>
+                    <label htmlFor="start-date">Start Date</label>
+                    <CustomDatePicker value={employeeData.startDate} setDate={(date) => setEmployeeData({ ...employeeData, startDate: date })}/><br/>
 
-          <fieldset className="address">
-              <legend>Address</legend>
+                    <fieldset className="form-address">
+                        <legend>Address</legend>
 
-              <label htmlFor="street">Street</label>
-              <input id="street" type="text" autoComplete="street-address" />
+                        <label htmlFor="street">Street</label>
+                        <input id="street" type="text" autoComplete="street-address" name="street" value={employeeData.street} onChange={handleFormChange} required />
 
-              <label htmlFor="city">City</label>
-              <input id="city" type="text" autoComplete="address-level1"/>
+                        <label htmlFor="city">City</label>
+                        <input id="city" type="text" autoComplete="address-level1" name="city" value={employeeData.city} onChange={handleFormChange} required/>
 
-              <label htmlFor="state">State</label>
-              <select name="state" id="state" autoComplete="country-name" ></select><br/>
+                        <label htmlFor="state">State</label>
+                        <select name="state" id="state" autoComplete="country-name" ></select>
 
-              <label htmlFor="zip-code">Zip Code</label>
-              <input id="zip-code" type="number" autoComplete="postal-code" />
-          </fieldset>
-          <br/>
-          <label htmlFor="department">Department</label><br/>
-          <select name="department" id="department">
-              <option>Sales</option>
-              <option>Marketing</option>
-              <option>Engineering</option>
-              <option>Human Resources</option>
-              <option>Legal</option>
-          </select>
-      </form>
-<br/>
-      <button onClick= 'saveEmployee()'>Save</button>
-  </div>
-  </div>
+                        <label htmlFor="zip-code">Zip Code</label>
+                        <input id="zipCode" type="number" autoComplete="postal-code" name="zipCode" value={employeeData.zipCode} onChange={handleFormChange} required/>
+                    </fieldset>
+                    <br/>
+                    
+                    <label htmlFor="department">Department</label>
+                    <select name="department" id="department">
+                        <option>Sales</option>
+                        <option>Marketing</option>
+                        <option>Engineering</option>
+                        <option>Human Resources</option>
+                        <option>Legal</option>
+                    </select>
+                </form>
+               <br/>
+               <button>Save</button>
+        </div>
+       </div>
     )
 }
 

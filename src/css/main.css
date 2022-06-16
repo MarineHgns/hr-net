@@ -385,13 +385,6 @@ body {
   text-decoration: none;
 }
 
-fieldset {
-  display: flex;
-  flex-direction: column;
-  width: 10%;
-  margin: auto;
-}
-
 .title {
   margin-top: -3em;
   margin-bottom: -1em;
@@ -405,9 +398,46 @@ a {
   margin: auto;
 }
 
-input {
-  margin-bottom: 2em;
-  margin-top: 0.4em;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-address {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.form-container input {
+  width: 200px;
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+
+.date-picker-container{
+  width: 250px;
+}
+
+.react-datepicker__today-button {
+  color:#00bc77;
+  font-size: 1.4em;
+}
+
+.date-picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 212px;
+  position: relative;
+  left: 1em;
+}
+
+.date-picker-select {
+  border-style: none;
+  background-color: #f0f0f0;
 }
 
 
