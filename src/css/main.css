@@ -415,6 +415,7 @@ a {
   width: 200px;
   margin-top: 0.8em;
   margin-bottom: 0.8em;
+  text-align: center;
 }
 
 .date-picker-container{
@@ -440,6 +441,16 @@ a {
   background-color: #f0f0f0;
 }
 
+.dropdown select {
+  width: 200px;
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+  text-align: center;
+}
+
+label {
+  font-weight: 600;
+}
 
 @media (min-width: 720px) {
   .account {

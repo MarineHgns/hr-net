@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import React from 'react';
 import { useState } from 'react';
 import CustomDatePicker from "../components/datePicker";
+import Dropdown from "../components/dropdown";
+import { states, departments } from "../data/data"
 
 function AddEmployee() {
     const [employeeData, setEmployeeData] = useState({
@@ -16,6 +18,7 @@ function AddEmployee() {
       department: "",
     });
     console.log(employeeData);
+    console.log(states);
 
     function handleFormChange(e) {
         setEmployeeData((employee) =>({
@@ -24,11 +27,14 @@ function AddEmployee() {
           }));
     }
 
+    
+
+
     return (
       <div>
-        <div className="title">
+        {/* <div className="title">
             <h1>HRnet</h1>
-        </div>
+        </div> */}
             <div className="container">
                 <Link to="/list-employee">
                     <button className="button-87 center">View Current Employees</button>
@@ -56,22 +62,14 @@ function AddEmployee() {
                         <label htmlFor="city">City</label>
                         <input id="city" type="text" autoComplete="address-level1" name="city" value={employeeData.city} onChange={handleFormChange} required/>
 
-                        <label htmlFor="state">State</label>
-                        <select name="state" id="state" autoComplete="country-name" ></select>
+                        <Dropdown label="States" options={states} id="state" handleFormChange={handleFormChange}/>
 
                         <label htmlFor="zip-code">Zip Code</label>
                         <input id="zipCode" type="number" autoComplete="postal-code" name="zipCode" value={employeeData.zipCode} onChange={handleFormChange} required/>
                     </fieldset>
                     <br/>
-                    
-                    <label htmlFor="department">Department</label>
-                    <select name="department" id="department">
-                        <option>Sales</option>
-                        <option>Marketing</option>
-                        <option>Engineering</option>
-                        <option>Human Resources</option>
-                        <option>Legal</option>
-                    </select>
+
+                        <Dropdown label="Departments" options={departments} id="department" handleFormChange={handleFormChange}/>
                 </form>
                <br/>
                <button>Save</button>
