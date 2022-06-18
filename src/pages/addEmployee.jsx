@@ -4,8 +4,11 @@ import { useState } from 'react';
 import CustomDatePicker from "../components/datePicker";
 import Dropdown from "../components/dropdown";
 import { states, departments } from "../data/data"
+import Modal  from "../components/modal";
+import showModal from "../components/modalFn";
 
 function AddEmployee() {
+    
     const [employeeData, setEmployeeData] = useState({
       firstName: "",
       lastName: "",
@@ -27,14 +30,18 @@ function AddEmployee() {
           }));
     }
 
-    
+    function handleSubmit(e){
+        e.preventDefault();
+        // if (employeeData.firstName.length ===0) {
+        //     alert("error")
+        //     return
+        // } 
+        showModal()
+    }
 
 
     return (
       <div>
-        {/* <div className="title">
-            <h1>HRnet</h1>
-        </div> */}
             <div className="container">
                 <Link to="/list-employee">
                     <button className="button-87 center">View Current Employees</button>
@@ -72,7 +79,8 @@ function AddEmployee() {
                         <Dropdown label="Departments" options={departments} id="department" handleFormChange={handleFormChange}/>
                 </form>
                <br/>
-               <button>Save</button>
+               <button onClick={handleSubmit} className='modal-toggle' >Save</button>
+               <Modal />
         </div>
        </div>
     )
