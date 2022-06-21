@@ -5,7 +5,7 @@ import range from "lodash/range";
 import { months } from "../data/data"
 import "react-datepicker/dist/react-datepicker.css";
 import { FaCaretLeft, FaCaretRight, FaHome} from "react-icons/fa";
-// Docs react-datepicker --> https://reactdatepicker.com/
+// Docs lib react-datepicker --> https://reactdatepicker.com/
 
 function CustomDatePicker({ value, setDate }) {
   const years = range(1920, getYear(new Date()) + 1, 1);

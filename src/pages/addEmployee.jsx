@@ -32,10 +32,6 @@ function AddEmployee() {
 
     function handleSubmit(e){
         e.preventDefault();
-        // if (employeeData.firstName.length ===0) {
-        //     alert("error")
-        //     return
-        // } 
         showModal()
     }
 
