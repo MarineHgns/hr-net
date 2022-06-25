@@ -84,70 +84,87 @@ const columns = [
   },
 ];
 
+const customStyles = {
+  rows: {
+      style: {
+          minHeight: '50px', // override the row height
+      },
+  },
+  headCells: {
+      style: {
+          fontSize: "1.4em",
+          fontWeight: "700",
+          '&:hover': {
+            cursor: 'pointer',
+            color: "green",
+            textDecoration : "underline"
+          },    
+      },
+  },
+  cells: {
+      style: {
+          fontSize: "1.2em",
+          fontFamily: "agence fb", 
+      },
+  },
+};
 
+const handleSort = (column, sortDirection) => console.log(column.selector, sortDirection);
 
 const Table = () => {
-  const [searchValue, setSearchValue] = useState("")
   const context = React.useContext(EmployeeContext);
-	const employees = context.employeesData;
+	const employeesData = context.employeesData;
   let allData = []
   allData.push(...mockedData);
-  allData.push(...employees)
+  allData.push(...employeesData)
   const [filteredEmployees, setFilteredEmployees] = useState(allData)
 
-
    function handleChange(e){
-    console.log(e.target.value);
-    setSearchValue(e.target.value.toLowerCase())
+    if(e.target.value.length > 0) {
+      let valueInput = document.getElementById("search").value
+        const matchingValues = []
+          allData.forEach(employee => {
+            const firstName = employee.firstName.toLowerCase()
+            const lastName = employee.lastName.toLowerCase()
+            const department = employee.department.toLowerCase()
+            const state = employee.state.toLowerCase()
+            const city = employee.city.toLowerCase()
+            const zipCode = employee.zipCode
+            const birthDate = employee.dateBirth
+            const startDate = employee.startDate
 
-    if(searchValue) {
-    console.log(e.target.value);
-    setSearchValue(e.target.value.toLowerCase())
-    console.log(searchValue);
-               const matchingValues = []
-               mockedData.forEach(employee => {
-                   const firstName = employee.firstName.toLowerCase()
-                   const lastName = employee.lastName.toLowerCase()
-                   const department = employee.department.toLowerCase()
-                   const state = employee.state.toLowerCase()
-                   const city = employee.city.toLowerCase()
-                   const zipCode = employee.zipCode
-                   const birthDate = employee.dateBirth
-                   const startDate = employee.startDate
-
-                   if(firstName.includes(searchValue.toLowerCase()) || lastName.includes(searchValue.toLowerCase()) || department.includes(searchValue.toLowerCase()) ||
-                        city.includes(searchValue.toLowerCase()) || state.includes(searchValue.toLowerCase()) || zipCode.includes(searchValue) ||
-                         birthDate.includes(searchValue) || startDate.includes(searchValue) ){
-                       matchingValues.push(employee)
-                   }
+              if(firstName.includes(valueInput.toLowerCase()) || lastName.includes(valueInput.toLowerCase()) || department.includes(valueInput.toLowerCase()) ||
+                  city.includes(valueInput.toLowerCase()) || state.includes(valueInput.toLowerCase()) || zipCode.includes(valueInput) ||
+                  birthDate.includes(valueInput) || startDate.includes(valueInput)){
+                  matchingValues.push(employee)
+              }
                })
                setFilteredEmployees(matchingValues)
            }
-           if(!searchValue || searchValue.length < 3){
-               setFilteredEmployees(mockedData)
+
+           if(e.target.value.length < 3){
+               setFilteredEmployees(allData)
            }
    }
 
-  const handleSort = (column, sortDirection) => console.log(column.selector, sortDirection);
-
-  if(filteredEmployees === null){
-      return <div className='no-results-table'>
-      Oh no. <br/>
-      No results yet. <br/>
-      Please add an employee to view it here.
-      </div>
-  }
+    if(filteredEmployees === null){
+        return <div className='no-results-table'>
+        Oh no. <br/>
+        No results yet. <br/>
+        Please add an employee to view it here.
+        </div>
+    }
   
   return (
     <div>
         <div id={"searchBar"}>
           <form>
                 <label htmlFor={"search"} className="search-label">Search :</label>
-                <input type={"string"} id={"search"} onChange={handleChange} />
-                </form>
+                <input type={"string"} id={"search"} onChange={handleChange}/>
+          </form>
         </div>
         <EmployeeTableWrapper>          
-            <DataTable columns={columns} data={filteredEmployees} onSort={handleSort} sortFunction={customSort} pagination/>     
+            <DataTable columns={columns} data={filteredEmployees} onSort={handleSort} sortFunction={customSort} defaultSortAsc={true} customStyles={customStyles} highlightOnHover={true} responsive={true} striped={true} persistTableHead={true} pagination paginationRowsPerPageOptions={[10, 25, 50, 100]}/>     
         </EmployeeTableWrapper>
     </div>
   )
