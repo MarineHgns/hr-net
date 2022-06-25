@@ -6,22 +6,25 @@ import Header from "./components/header";
 import Error from "./pages/error"
 import AddEmployee from "./pages/addEmployee";
 import ListEmployee from "./pages/listEmployee";
-import React from 'react';
+import React from "react";
+import EmployeeContextProvider from "./data/context/context";
 
 function App() {
   return (
+    <EmployeeContextProvider>
     <div className="App">
         < Header />
           <Routes>
             <Route exact path="/" element={<Home />}/>
             <Route path="/hr-net" element={<Home />}/>
             <Route path="/add-employee" element={<AddEmployee />}/>
-            <Route path="/list-employee" element={<ListEmployee />}/>
+            <Route path="/list-employee" element={<ListEmployee/>}/>
             <Route path="/*" element={<Error />}/>
           </Routes>
           < Footer />
 
       </div>
+      </EmployeeContextProvider>
   );
 }
 

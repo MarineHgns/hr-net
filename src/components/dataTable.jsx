@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import DataTable from 'react-data-table-component';
 import { mockedData } from '../data/mockedDataForm';
 import styled from "styled-components";
+import { EmployeeContext } from '../data/context/context';
 
 //Docs lib --> https://jbetancur.github.io/react-data-table-component/?path=/story/getting-started-examples--page
 
@@ -84,17 +85,27 @@ const columns = [
 ];
 
 
-const Table = () => {
-   const [searchValue, setSearchValue] = useState(" ")
-   const [filteredEmployees, setFilteredEmployees] = useState(mockedData)
-   
-   function handleChange(e){
-   setSearchValue(e.target.value.toLowerCase().trim())
 
-   if(searchValue) {
+const Table = () => {
+  const [searchValue, setSearchValue] = useState("")
+  const context = React.useContext(EmployeeContext);
+	const employees = context.employeesData;
+  let allData = []
+  allData.push(...mockedData);
+  allData.push(...employees)
+  const [filteredEmployees, setFilteredEmployees] = useState(allData)
+
+
+   function handleChange(e){
+    console.log(e.target.value);
+    setSearchValue(e.target.value.toLowerCase())
+
+    if(searchValue) {
+    console.log(e.target.value);
+    setSearchValue(e.target.value.toLowerCase())
+    console.log(searchValue);
                const matchingValues = []
                mockedData.forEach(employee => {
-                console.log(employee);
                    const firstName = employee.firstName.toLowerCase()
                    const lastName = employee.lastName.toLowerCase()
                    const department = employee.department.toLowerCase()
@@ -130,8 +141,10 @@ const Table = () => {
   return (
     <div>
         <div id={"searchBar"}>
+          <form>
                 <label htmlFor={"search"} className="search-label">Search :</label>
-                <input type={"string"} id={"search"} onChange={handleChange}/>
+                <input type={"string"} id={"search"} onChange={handleChange} />
+                </form>
         </div>
         <EmployeeTableWrapper>          
             <DataTable columns={columns} data={filteredEmployees} onSort={handleSort} sortFunction={customSort} pagination/>     

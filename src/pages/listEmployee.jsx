@@ -8,7 +8,8 @@ const ListEmployee = () => {
     <div className='table-data-container'>
       <h1>Current Employees</h1>
 
-        <Table/>
+
+        <Table />
         
         <div className='link-container'>
           <Link to="/">

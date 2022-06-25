@@ -5,10 +5,12 @@ import CustomDatePicker from "../components/datePicker";
 import Dropdown from "../components/dropdown";
 import { states, departments } from "../data/data"
 import Modal  from "../components/modal";
-import showModal from "../components/modalFn";
+import { createEmployee } from "../data/context/services";
+import { EmployeeContext } from "../data/context/context";
+// import showModal from "../components/modalFn";
 
-function AddEmployee() {
-    
+
+const CreateEmployee = () => {
     const [employeeData, setEmployeeData] = useState({
       firstName: "",
       lastName: "",
@@ -20,8 +22,10 @@ function AddEmployee() {
       zipCode: "",
       department: "",
     });
-    console.log(employeeData);
-    console.log(states);
+
+    const context = React.useContext(EmployeeContext);
+
+	// const [isOpened, setIsOpened] = useState(false);
 
     function handleFormChange(e) {
         setEmployeeData((employee) =>({
@@ -32,8 +36,12 @@ function AddEmployee() {
 
     function handleSubmit(e){
         e.preventDefault();
-        showModal()
+        // showModal()
+        console.log(employeeData);
+        createEmployee(employeeData, context);
+		// setIsOpened(true);
     }
+
 
 
     return (
@@ -43,12 +51,12 @@ function AddEmployee() {
                     <button className="button-87 center">View Current Employees</button>
                 </Link>
                 <h2>Create Employee</h2>
-                <form action="#" id="create-employee" className="form-container">
+                <form action="#" id="create-employee" className="form-container" onSubmit={handleSubmit}>
                     <label htmlFor="firstName" className="left">First Name</label>
-                    <input type="text" id="firstName" name="firstName" autoComplete="given-name" value={employeeData.firstName} onChange={handleFormChange} required/>
+                    <input type="text" id="firstName" name="firstName" autoComplete="given-name" value={employeeData.firstName} onChange={handleFormChange} required min={3} max={20} pattern={"[A-Za-z]{3,20}"}/>
 
                     <label htmlFor="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" autoComplete="family-name" value={employeeData.lastName} onChange={handleFormChange} required/>
+                    <input type="text" id="lastName" name="lastName" autoComplete="family-name" value={employeeData.lastName} onChange={handleFormChange} required min={3} max={20} pattern={"[A-Za-z]{3,20}"}/>
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
                     <CustomDatePicker value={employeeData.dateBirth} setDate={(date) => setEmployeeData({ ...employeeData, dateBirth: date })}/><br/>
@@ -60,26 +68,32 @@ function AddEmployee() {
                         <legend>Address</legend>
 
                         <label htmlFor="street">Street</label>
-                        <input id="street" type="text" autoComplete="street-address" name="street" value={employeeData.street} onChange={handleFormChange} required />
+                        <input id="street" type="text" autoComplete="street-address" name="street" value={employeeData.street} onChange={handleFormChange} required min={3} max={60}/>
 
                         <label htmlFor="city">City</label>
-                        <input id="city" type="text" autoComplete="address-level1" name="city" value={employeeData.city} onChange={handleFormChange} required/>
+                        <input id="city" type="text" autoComplete="address-level1" name="city" value={employeeData.city} onChange={handleFormChange} required min={3} max={20} pattern={"[A-Za-z]{3,20}"}/>
 
                         <Dropdown label="States" options={states} id="state" handleFormChange={handleFormChange}/>
 
                         <label htmlFor="zip-code">Zip Code</label>
-                        <input id="zipCode" type="number" autoComplete="postal-code" name="zipCode" value={employeeData.zipCode} onChange={handleFormChange} required/>
+                        <input id="zipCode" type="number" autoComplete="postal-code" name="zipCode" value={employeeData.zipCode} onChange={handleFormChange} required  pattern={"[0-9]{3,20}"}/>
                     </fieldset>
                     <br/>
 
                         <Dropdown label="Departments" options={departments} id="department" handleFormChange={handleFormChange}/>
-                </form>
+                
                <br/>
-               <button onClick={handleSubmit} className='modal-toggle' >Save</button>
+               <button 
+               type="submit"
+               value={'save'}
+               className='modal-toggle' 
+            //    onClick={showModal}
+               >Save</button>
+               </form>
                <Modal />
         </div>
        </div>
     )
 }
 
-export default AddEmployee
+export default CreateEmployee
