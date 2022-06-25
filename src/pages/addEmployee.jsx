@@ -7,7 +7,7 @@ import { states, departments } from "../data/data"
 import Modal  from "../components/modal";
 import { createEmployee } from "../data/context/services";
 import { EmployeeContext } from "../data/context/context";
-// import showModal from "../components/modalFn";
+import showModal from "../components/modalFn";
 
 
 const CreateEmployee = () => {
@@ -25,8 +25,6 @@ const CreateEmployee = () => {
 
     const context = React.useContext(EmployeeContext);
 
-	// const [isOpened, setIsOpened] = useState(false);
-
     function handleFormChange(e) {
         setEmployeeData((employee) =>({
             ...employee,
@@ -36,13 +34,12 @@ const CreateEmployee = () => {
 
     function handleSubmit(e){
         e.preventDefault();
-        // showModal()
+        document.querySelector(".modal-wrapper").classList.add("modal--active")
+        showModal()
         console.log(employeeData);
         createEmployee(employeeData, context);
-		// setIsOpened(true);
     }
-
-
+   
 
     return (
       <div>
