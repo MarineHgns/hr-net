@@ -142,7 +142,7 @@ const Table = () => {
                setFilteredEmployees(matchingValues)
            }
 
-           if(e.target.value.length < 3){
+           if(e.target.value.length < 2){
                setFilteredEmployees(allData)
            }
    }

@@ -7,10 +7,7 @@ const ListEmployee = () => {
   return (
     <div className='table-data-container'>
       <h1>Current Employees</h1>
-
-
         <Table />
-        
         <div className='link-container'>
           <Link to="/">
             <h1 className="homepage-link">Return to Homepage</h1>

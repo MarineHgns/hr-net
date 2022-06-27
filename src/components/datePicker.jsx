@@ -18,6 +18,8 @@ function CustomDatePicker({ value, setDate }) {
         selected={value}
         onChange={(date) => setDate(date)}
         required
+        closeOnScroll={true}
+        placeholderText="Click to select a date"
         renderCustomHeader={({
           date,
           changeMonth,

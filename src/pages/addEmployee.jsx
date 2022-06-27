@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import React from 'react';
 import { useState } from 'react';
 import CustomDatePicker from "../components/datePicker";
-import Dropdown from "../components/dropdown";
+// import {Dropdown} from "hr-net-package-dropdown";
 import { states, departments } from "../data/data"
 import Modal  from "../components/modal";
 import { createEmployee } from "../data/context/services";
@@ -36,8 +36,17 @@ const CreateEmployee = () => {
         e.preventDefault();
         document.querySelector(".modal-wrapper").classList.add("modal--active")
         showModal()
-        console.log(employeeData);
         createEmployee(employeeData, context);
+        setEmployeeData({
+        firstName: "",
+        lastName: "",
+        dateBirth: "",
+        startDate: "",
+        street: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        department: "",})
     }
    
 
@@ -70,23 +79,18 @@ const CreateEmployee = () => {
                         <label htmlFor="city">City</label>
                         <input id="city" type="text" autoComplete="address-level1" name="city" value={employeeData.city} onChange={handleFormChange} required min={3} max={20} pattern={"[A-Za-z]{3,20}"}/>
 
-                        <Dropdown label="States" options={states} id="state" handleFormChange={handleFormChange}/>
+                        {/* <Dropdown label="States" options={states} id="state" handleFormChange={handleFormChange}/> */}
 
                         <label htmlFor="zip-code">Zip Code</label>
                         <input id="zipCode" type="number" autoComplete="postal-code" name="zipCode" value={employeeData.zipCode} onChange={handleFormChange} required  pattern={"[0-9]{3,20}"}/>
                     </fieldset>
                     <br/>
 
-                        <Dropdown label="Departments" options={departments} id="department" handleFormChange={handleFormChange}/>
+                        {/* <Dropdown label="Departments" options={departments} id="department" handleFormChange={handleFormChange}/> */}
                 
-               <br/>
-               <button 
-               type="submit"
-               value={'save'}
-               className='modal-toggle' 
-            //    onClick={showModal}
-               >Save</button>
-               </form>
+                    <br/>
+                  <button type="submit" value={'save'} className='modal-toggle button-87'>Save employee</button>
+                </form>
                <Modal />
         </div>
        </div>

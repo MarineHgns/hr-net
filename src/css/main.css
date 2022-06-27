@@ -48,6 +48,10 @@ body {
   /* 3 */
 }
 
+.link-container {
+  margin-top: -1em;
+}
+
 .main-nav {
   display: flex;
   flex-direction: column;
@@ -207,11 +211,21 @@ body {
   text-decoration: underline;
 }
 
+.homepage {
+  margin-bottom: 18em;
+}
+
+
 
 @media (min-width: 920px) {
+  .homepage {
+    margin-bottom: 20em;
+  }
+
   #searchBar {
     position: relative;
-    right: -15%;
+    right: -60%;
+    max-width: fit-content;
   }
 
   .hero {
@@ -246,6 +260,11 @@ body {
     flex-direction: row;
   }
 }
+
+.container {
+  margin-bottom: 1.4em;
+}
+
 
 .feature-icon {
   width: 100px;
@@ -537,13 +556,6 @@ a {
 .date-picker-select {
   border-style: none;
   background-color: #f0f0f0;
-}
-
-.dropdown select {
-  width: 200px;
-  margin-top: 0.8em;
-  margin-bottom: 0.8em;
-  text-align: center;
 }
 
 label {
