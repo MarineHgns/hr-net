@@ -7,7 +7,7 @@ import { EmployeeContext } from '../data/context/context';
 //Docs lib --> https://jbetancur.github.io/react-data-table-component/?path=/story/getting-started-examples--page
 
 const EmployeeTableWrapper = styled.div`
-  width: 80%;
+  width: 95%;
   margin: auto;
 `
 

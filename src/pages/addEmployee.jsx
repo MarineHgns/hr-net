@@ -82,15 +82,15 @@ const CreateEmployee = () => {
                         
                         <Dropdown label="States" options={states} id="state" handleFormChange={handleFormChange}/>
 
-                        <label htmlFor="zip-code">Zip Code</label>
-                        <input id="zipCode" type="number" autoComplete="postal-code" name="zipCode" value={employeeData.zipCode} onChange={handleFormChange} required  pattern={"[0-9]{3,20}"}/>
+                        <label htmlFor="zipCode">Zip Code</label>
+                        <input id="zipCode" type="number" autoComplete="postal-code" name="zipCode" aria-labelledby="zipCode" value={employeeData.zipCode} onChange={handleFormChange} required  pattern={"[0-9]{3,20}"}/>
                     </fieldset>
                     <br/>
                         
                         <Dropdown label="Departments" options={departments} id="department" handleFormChange={handleFormChange}/>
                 
                     <br/>
-                  <button type="submit" value={'save'} className='modal-toggle button-87'>Save employee</button>
+                  <button type="submit" value={'save'} className='modal-toggle button-87' aria-label="save employee">Save employee</button>
                 </form>
                <Modal />
         </div>
