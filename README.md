@@ -1,4 +1,4 @@
-# Project 14 : HRNet
+# Project 14 : HRnet
 
 An application that allows you to create employees and find them in a table (with a sort and search function)
 
