@@ -1,5 +1,4 @@
 import React, {useState, lazy, Suspense} from 'react';
-// import DataTable from 'react-data-table-component';
 import { mockedData } from '../data/mockedDataForm';
 import styled from "styled-components";
 import { EmployeeContext } from '../data/context/context';
