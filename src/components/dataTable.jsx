@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
-import DataTable from 'react-data-table-component';
+import React, {useState, lazy, Suspense} from 'react';
+// import DataTable from 'react-data-table-component';
 import { mockedData } from '../data/mockedDataForm';
 import styled from "styled-components";
 import { EmployeeContext } from '../data/context/context';
+const DataTable = lazy(() => import('react-data-table-component'));
+
+
 
 //Docs lib --> https://jbetancur.github.io/react-data-table-component/?path=/story/getting-started-examples--page
 
@@ -163,8 +166,10 @@ const Table = () => {
                 <input type={"string"} id={"search"} onChange={handleChange}/>
           </form>
         </div>
-        <EmployeeTableWrapper>          
-            <DataTable columns={columns} data={filteredEmployees} onSort={handleSort} sortFunction={customSort} defaultSortAsc={true} customStyles={customStyles} highlightOnHover={true} responsive={true} striped={true} persistTableHead={true} pagination paginationRowsPerPageOptions={[10, 25, 50, 100]}/>     
+        <EmployeeTableWrapper>  
+          <Suspense fallback={<p>Loading...</p>}>
+            <DataTable columns={columns} data={filteredEmployees} onSort={handleSort} sortFunction={customSort} defaultSortAsc={true} customStyles={customStyles} highlightOnHover={true} responsive={true} striped={true} persistTableHead={true} pagination paginationRowsPerPageOptions={[10, 25, 50, 100]}/>
+          </Suspense>
         </EmployeeTableWrapper>
     </div>
   )
