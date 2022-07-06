@@ -4,6 +4,7 @@ function showModal() {
      
     modalWrapper.focus();
 
+    
     closeModal.forEach(button => {
         button.addEventListener('click', () => {
           modalWrapper.style.display='none';
