@@ -175,8 +175,6 @@ const Table = () => {
           </form>
         </div>
         <EmployeeTableWrapper>  
-          /* React feature that allows to "wait" for some code to load and show a loading
-          indicator while it's loading. */
           <Suspense fallback={<p>Loading...</p>}>
             <DataTable columns={columns} data={filteredEmployees} onSort={handleSort} sortFunction={customSort} defaultSortAsc={true} customStyles={customStyles} highlightOnHover={true} responsive={true} striped={true} persistTableHead={true} pagination paginationRowsPerPageOptions={[10, 25, 50, 100]}/>
           </Suspense>
