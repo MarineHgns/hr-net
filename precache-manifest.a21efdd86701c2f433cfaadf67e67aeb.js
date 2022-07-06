@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "fe1b8543e663c86d883c",
+    "revision": "e275bffe1fd5cda4af71",
     "url": "/hr-net/static/css/main.c76c1699.chunk.css"
   },
   {
-    "revision": "fe1b8543e663c86d883c",
-    "url": "/hr-net/static/js/main.e28e3b15.chunk.js"
+    "revision": "e275bffe1fd5cda4af71",
+    "url": "/hr-net/static/js/main.0ffb9301.chunk.js"
   },
   {
     "revision": "b03b34562b6bca17b991",
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/hr-net/static/media/Tree-wallpaper-to-use-as-background-15.fca28a62.jpg"
   },
   {
-    "revision": "54c17221da5c399ded5080cb31e2539f",
+    "revision": "0d4c3a42baaebf4793f20007d337bd9e",
     "url": "/hr-net/index.html"
   }
 ];
