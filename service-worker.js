@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/hr-net/precache-manifest.910d5d7359f4e82e5d10e2025d677c45.js"
+  "/hr-net/precache-manifest.2e635ea96f90b468207af4f33d22b372.js"
 );
 
 workbox.clientsClaim();
