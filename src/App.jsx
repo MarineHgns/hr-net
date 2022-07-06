@@ -16,8 +16,13 @@ function App() {
         < Header />
           <Routes>
             <Route exact path="/" element={<Home />}/>
+            <Route path="/" element={<Home />}/>
+            <Route exact path="https://marinehgns.github.io/" element={<Home />}/>
+            <Route path="https://marinehgns.github.io/" element={<Home />}/>
             <Route path="/hr-net" element={<Home />}/>
             <Route path="/add-employee" element={<AddEmployee />}/>
+            <Route path="https://marinehgns.github.io/add-employee" element={<AddEmployee />}/>
+            <Route exact path="https://marinehgns.github.io/add-employee" element={<AddEmployee />}/>
             <Route path="/list-employee" element={<ListEmployee/>}/>
             <Route path="/*" element={<Error />}/>
           </Routes>
