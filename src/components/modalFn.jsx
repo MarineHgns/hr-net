@@ -1,3 +1,7 @@
+/**
+ * When the user clicks or press the enter key on the button, the modal will appear, 
+ * and when the user clicks or press the enter key on the close button, the modal will disappear.
+ */
 function showModal() {
     const modalWrapper = document.querySelector('.modal-wrapper');
     const closeModal = document.querySelectorAll('.close-btn');

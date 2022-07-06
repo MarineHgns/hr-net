@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { EmployeeContext } from '../data/context/context';
 const DataTable = lazy(() => import('react-data-table-component'));
 
-
-
 //Docs lib --> https://jbetancur.github.io/react-data-table-component/?path=/story/getting-started-examples--page
 
 const EmployeeTableWrapper = styled.div`
@@ -13,6 +11,11 @@ const EmployeeTableWrapper = styled.div`
   margin: auto;
 `
 
+/**
+ * The direction is either 'asc' or 'desc', the function returns a sorted array of objects.
+ * By default the array of objects is sorts by ascending order.
+ * @returns customSort function.
+ */
 const customSort = (rows, selector, direction) => {
 	return rows.sort((a, b) => {
 		const aField = selector(a).toLowerCase();
@@ -89,7 +92,7 @@ const columns = [
 const customStyles = {
   rows: {
       style: {
-          minHeight: '50px', // override the row height
+          minHeight: '50px',
       },
   },
   headCells: {
@@ -121,6 +124,11 @@ const Table = () => {
   allData.push(...employeesData)
   const [filteredEmployees, setFilteredEmployees] = useState(allData)
 
+   /**
+    * Search function : 
+    * If the input value is greater than 0, then the values of allData containing valueInput are returned in matchingValues. 
+    * If valueInput < 2 setFilteredEmployees is set to allData (this displays all data from allData).
+    */
    function handleChange(e){
     if(e.target.value.length > 0) {
       let valueInput = document.getElementById("search").value
@@ -149,6 +157,7 @@ const Table = () => {
            }
    }
 
+    /* If filteredEmployees is null it indicates that the data table is empty. */
     if(filteredEmployees === null){
         return <div className='no-results-table'>
         Oh no. <br/>
@@ -166,6 +175,8 @@ const Table = () => {
           </form>
         </div>
         <EmployeeTableWrapper>  
+          /* React feature that allows to "wait" for some code to load and show a loading
+          indicator while it's loading. */
           <Suspense fallback={<p>Loading...</p>}>
             <DataTable columns={columns} data={filteredEmployees} onSort={handleSort} sortFunction={customSort} defaultSortAsc={true} customStyles={customStyles} highlightOnHover={true} responsive={true} striped={true} persistTableHead={true} pagination paginationRowsPerPageOptions={[10, 25, 50, 100]}/>
           </Suspense>

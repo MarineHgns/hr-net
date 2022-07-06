@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />}/>
             <Route path="/" element={<Home />}/>
-            <Route path="/hr-net" element={<ListEmployee />}/>
+            <Route path="/hr-net" element={<Home />}/>
             <Route path="/add-employee" element={<AddEmployee />}/>
             <Route path="/list-employee" element={<ListEmployee/>}/>
             <Route path="/*" element={<Error />}/>
