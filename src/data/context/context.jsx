@@ -22,6 +22,11 @@ const EmployeeContextProvider = ({ children }) => {
     );
 };
 
+/**
+ * Takes an employee object and returns a new employee object with the dateBirth and
+ * startDate properties formatted as dates.
+ * @returns The employee object.
+ */
 export const formatEmployee = (employee) => {
     employee.dateBirth = formatDate(employee.dateBirth);
     employee.startDate = formatDate(employee.startDate);
@@ -29,6 +34,10 @@ export const formatEmployee = (employee) => {
     return employee;
 }
 
+/**
+ * Function take a date as a parameter and returns a new date in a different format.
+ * @returns a formatted date.
+ */
 const formatDate = (date) => {
     return new Date(date).toLocaleDateString("en");
 }

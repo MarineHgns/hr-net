@@ -1,6 +1,11 @@
 import React from 'react';
 import {FaWindowClose} from "react-icons/fa";
 
+/**
+ * The Modal function returns a div which contains the text "Employee Created !" and a closing button.
+ * @returns A modal component that is rendered when the user clicks the submit button.
+ */
+
 const Modal = () => {
   return (
     <div className='modal-wrapper'>
